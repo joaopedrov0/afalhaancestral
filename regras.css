@@ -1,0 +1,14 @@
+header{
+    background-image: url('regras.jpg');
+}
+.wrap > p{
+    margin: 15px 0 30px;
+}
+.ativo::after{
+    content: 'Status: Ativo';
+    color: green;
+}
+.inativo::after{
+    content: 'Status: Inativo';
+    color: red;
+}

@@ -1,0 +1,12 @@
+header{
+    background-image: url('encantamento.jpg');
+}
+
+hr{
+    border-color: brown;
+    margin: 10px 0;
+}
+
+ul{
+    list-style: none;
+}
