@@ -141,3 +141,17 @@ img{
 
     border: 10px double rgb(192, 158, 7);
 }
+
+
+@media screen and (max-width: 960px){
+    header{
+        height: 250px;
+    }
+    header a {
+        font-size: 36px;
+    }
+    div.card{
+        width: 230px;
+        height: 230px;
+    }
+}

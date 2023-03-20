@@ -16,8 +16,19 @@
     <div class="wrap">
         <h1>Poções</h1>
         <p>Para criar uma opção, você precisa de água, calor, e 30 - 1d20 - modInt minutos, além, claro, dos ingredientes necessários.</p>
+        <div class="searchArea">
+            <input name="potion-choice" id="potion-choice" list="potion-list" placeholder="Pesquisa por nome"> <input name="ingredient-choice" id="ingredient-choice" list="ingredient-list" placeholder="Pesquisa por ingrediente"> <button onclick="refreshPotions()">Procurar</button> <button onclick="clearFilters()">Limpar filtro</button>
+            <datalist id="potion-list">
+                <!-- <option value="cura"> <option value="velocidade"> <option value="transcendenciaArcana"> <option value="potencializarTalentos"> <option value="veneno"> <option value="amplificarIntelecto"> <option value="pulsoSanidade"> <option value="respiracaoDebaixoDagua"> <option value="ultraHidratacao"> <option value="visaoNoEscuro"> <option value="odioIncontrolavel"> <option value="invulnerabilidade"> <option value="vigorAprimorado"> <option value="resistenciaTemperaturasExtremas"> <option value="ecolocalizacao"> <option value="potenciaDraconica"> <option value="curaGradual"> -->
+                <option value="Poção de cura"> <option value="Poção de velocidade"> <option value="Poção de Transcendência Arcana"> <option value="Poção de Potencializar Talentos"> <option value="Poção de Veneno"> <option value="Poção de Amplificar Intelecto"> <option value="Poção de Pulso de Sanidade"> <option value="Poção de Respiração debaixo d'água"> <option value="Elixir de ultra hidratação"> <option value="Poção de visão no escuro"> <option value="Poção de visão no escuro"> <option value="Poção de Invulnerabilidade"> <option value="Poção de Vigor Aprimorado"> <option value="Poção de Resistência a Temperaturas Extremas"> <option value="Poção da Ecolocalização"> <option value="Poção de Potência Dracônica"> <option value="Poção de Cura Gradual">
+            </datalist>
+            <datalist id="ingredient-list">
+                <option value="Sangue de abutre"><option value="Escama de serpente venenosa"><option value="Cérebro de polvo"><option value="Cérebro de Golfinho"><option value="Olho de aranha gigante"><option value="Olho de aranha normal"><option value="Guelras de peixe"><option value="Vinhas"><option value="Erva-duplicata"><option value="Escamas de peixe"><option value="Açúcar"><option value="Dente de piranha"><option value="Cabeça de animal recente"><option value="Olhos de Gorila Gigante"><option value="Músculo de Urso Negro"><option value="Pedra de Gelo"><option value="Cinzas de madeira"><option value="Olhos de Águia"><option value="Escamas de dragão"><option value="Raiz de árvore"><option value="Raiz de plantas"><option value="Cana de açúcar"><option value="Erva-Estrela"><option value="Crânio de Enguia"><option value="Crânio de Águia"><option value="Dentes de leão"><option value="Dentes de dragão">
+            </datalist>
+        </div>
+        
         <div class="potionArea">
-            
+              
         </div>
     </div>
     <script src="pocoes.js"></script>

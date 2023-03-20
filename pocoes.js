@@ -15,7 +15,7 @@ const potions = {
         modificacoes: '2d6 + 4 com Erva-Duplicata',
         preco: '30po'
     },
-    velodicade: {
+    velocidade: {
         nome: 'Poção de velocidade',
         ingredientes: 'Cana de açúcar e Erva-Estrela',
         efeitos: 'O usuário tem o deslocamento dobrado, e vantagem em todos os testes de resistência de destreza.',
@@ -137,7 +137,7 @@ const potions = {
     },
     curaGradual: {
         nome: "Poção de Cura Gradual",
-        ingredientes: "3 porções de raiz.",
+        ingredientes: "3 porções de raíz.",
         efeitos: "Nesse e no próximo turno, o usuário cura 1d4+3.",
         duracao: "2 turnos.",
         modificacoes: "Com erva duplicata, o efeito acontece nesse turno e nos próximos 4 turnos.",
@@ -148,28 +148,141 @@ const potions = {
 //selecionar a organização das poções (ordem alfabética)
 const potionArea = document.querySelector('.potionArea')
 
-function gerarPotions(){
+function gerarPotions(potions) {
+    potionArea.innerHTML = ''
+    let filtrar = document.querySelector('#potion-choice').value
     // pegar o html da pagina e limpar, conectar ele com a variavel html
     var html = ''
-    for(potion in potions) {
-        let potionHtml = ''
-        potionHtml += `
-        <hr>
-        <div class="potion">
-            <h2>${potions[potion].nome}</h2>
-            <p><strong>Ingredientes: </strong>${potions[potion].ingredientes}</p>
-            <p><strong>Efeitos: </strong>${potions[potion].efeitos}</p>
-            <p><strong>Duração: </strong>${potions[potion].duracao}</p>
-        `
-        if (potion.modificacoes) {
-            potionHtml += `<p><strong>Modificações: </strong>${potions[potion].modificacoes}</p>`
-        }
-        potionHtml += `<p><strong>Preço: </strong>${potions[potion].preco}</p>
-        </div>`
+    for (potion in potions) {
+            let potionHtml = ''
+            potionHtml += `
+                <hr>
+                <div class="potion">
+                    <h2>${potions[potion].nome}</h2>
+                    <p><strong>Ingredientes: </strong>${potions[potion].ingredientes}</p>
+                    <p><strong>Efeitos: </strong>${potions[potion].efeitos}</p>
+                    <p><strong>Duração: </strong>${potions[potion].duracao}</p>
+                `
+            if (potion.modificacoes) {
+                potionHtml += `<p><strong>Modificações: </strong>${potions[potion].modificacoes}</p>`
+            }
+            potionHtml += `<p><strong>Preço: </strong>${potions[potion].preco}</p>
+                </div>`
 
-        html += potionHtml
+            html += potionHtml
+        }
+        potionArea.innerHTML = html
+        console.log('Potion list refreshed!')
     }
-    potionArea.innerHTML = html
+    
+
+
+gerarPotions(potions)
+
+
+function refreshPotions(){
+    // if (potions[potion].nome === filtrar && filtrar) {
+    //     console.log('equal ' + potion)
+    //     console.log(potions[potion])
+
+    //     let potionHtml = ''
+    //     potionHtml += `
+    //         <hr>
+    //         <div class="potion">
+    //             <h2>${potions[potion].nome}</h2>
+    //             <p><strong>Ingredientes: </strong>${potions[potion].ingredientes}</p>
+    //             <p><strong>Efeitos: </strong>${potions[potion].efeitos}</p>
+    //             <p><strong>Duração: </strong>${potions[potion].duracao}</p>
+    //         `
+    //     if (potion.modificacoes) {
+    //         potionHtml += `<p><strong>Modificações: </strong>${potions[potion].modificacoes}</p>`
+    //     }
+    //     potionHtml += `<p><strong>Preço: </strong>${potions[potion].preco}</p>
+    //         </div>`
+
+    //     html += potionHtml
+
+    let nome = document.querySelector('#potion-choice').value
+    let ingredient = document.querySelector('#ingredient-choice').value
+
+    // if (nome == ingredient == '') {gerarPotions(potions)}
+
+    var temp = {}
+
+    if (ingredient !== ''){
+        // for (potion in potions) {
+        //     if (potions[potion].ingredientes.toLowerCase().indexOf(ingredient.toLowerCase()) !== -1) temp[potion] = potions[potion]
+        // }
+        for(ingrediente of ingredientes[ingredient]){
+            temp[ingrediente] = potions[ingrediente]
+            console.log(ingrediente)
+        }
+        nome = document.querySelector('#potion-choice').value = ''
+        ingredient = document.querySelector('#ingredient-choice').value = ''
+        gerarPotions(temp)
+        
+    } else if (nome !== ''){
+        for (potion in potions) {
+            if (potions[potion].nome.toLowerCase().indexOf(nome.toLowerCase()) !== -1) temp[potion] = potions[potion]
+        }
+        ingredient = document.querySelector('#ingredient-choice').value = ''
+        nome = document.querySelector('#potion-choice').value = ''
+        gerarPotions(temp)
+        
+    }
 }
 
-gerarPotions()
+
+
+
+function clearFilters(){
+    let nome = document.querySelector('#potion-choice').value
+    let ingredient = document.querySelector('#ingredient-choice').value
+    nome = document.querySelector('#potion-choice').value = ''
+    ingredient = document.querySelector('#ingredient-choice').value = ''
+
+    gerarPotions(potions)
+}
+
+
+const ingredientes = {
+    "Sangue de abutre": ["potencializarTalentos"], 
+    "Escama de serpente venenosa": ["veneno"], 
+    "Cérebro de polvo": ["amplificarIntelecto"], 
+    "Cérebro de Golfinho": ["amplificarIntelecto"], 
+    "Olho de aranha gigante": ["pulsoSanidade"], 
+    "Olho de aranha normal": ["visaoNoEscuro", "pulsoSanidade"], 
+    "Guelras de peixe": ["respiracaoDebaixoDagua"], 
+    "Vinhas": ["ultraHidratacao"], 
+    "Erva-duplicata": ["ultraHidratacao", "invulnerabilidade"], 
+    "Escamas de peixe": ["ultraHidratacao"], 
+    "Açúcar": ["velocidade", "visaoNoEscuro"], 
+    "Dente de piranha": ["odioIncontrolavel"], 
+    "Cabeça de animal recente": ["odioIncontrolavel"], 
+    "Olhos de Gorila Gigante": ["invulnerabilidade"], 
+    "Músculo de Urso Negro": ["vigorAprimorado"], 
+    "Pedra de Gelo": ["resistenciaTemperaturasExtremas"], 
+    "Cinzas de madeira": ["resistenciaTemperaturasExtremas"], 
+    "Olhos de Águia": ["ecolocalizacao"], 
+    "Escamas de dragão": ["potenciaDraconica"],
+    "Raiz de árvore": ["cura", "ultraHidratacao", "curaGradual"],
+    "Raiz de plantas": ["cura", "ultraHidratacao", "curaGradual"],
+    "Cana de açúcar": ["velocidade"],
+    "Erva-Estrela": ["velocidade", "potencializarTalentos", "pulsoSanidade", "ultraHidratacao", "odioIncontrolavel", "invulnerabilidade", "vigorAprimorado", "ecolocalizacao"],
+    "Crânio de Enguia": ["transcendenciaArcana"],
+    "Crânio de Águia": ["transcendenciaArcana"],
+    "Dentes de leão": ["transcendenciaArcana"],
+    "Dentes de dragão": ["transcendenciaArcana"],
+}
+
+
+
+
+
+function SearchPotion(keyword){
+    c = ''
+    for(potion in potions){
+    if (potions[potion].ingredientes.toLowerCase().indexOf(keyword.toLowerCase()) !== -1) c += `"${potion}", `
+    }
+    console.log(c)
+}
