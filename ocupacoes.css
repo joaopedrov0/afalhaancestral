@@ -1,0 +1,38 @@
+header{
+    background-image: url('ocupações.jpg');
+}
+
+/* hr{
+    border-color: brown;
+    margin: 10px 0;
+} */
+
+.ocupacao{
+    margin: 10px 0;
+    border: 10px double brown;
+    padding: 10px;
+}
+
+table{
+    border: 10px double rgb(136, 136, 136);
+}
+
+table tr{
+    border-bottom: 1px solid rgb(136, 136, 136);
+    margin: 0;
+    border: none;
+    border-style: none;
+}
+
+table tr > * {
+    padding: 5px 10px;
+}
+
+td{
+    border: 1px solid rgb(136, 136, 136);
+    border-collapse: collapse;
+}
+
+table tr:nth-child(even) {
+    background-color: #e2efd9;
+}

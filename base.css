@@ -90,12 +90,16 @@ div.card{
     background-size: cover;
 
     border-radius: 10px;
+    transition: all ease-in 200ms;
+
+    
+    border: 10px double rgb(151, 151, 151);
 }
 
 
 div.card > * {
     display: flex;
-    backdrop-filter: blur(3px);
+    /* backdrop-filter: blur(3px); */
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -105,34 +109,29 @@ div.card > * {
     transition: all ease-in 200ms;
 }
 
-div.card:hover > * {
-    display: flex;
-    backdrop-filter: blur(1px);
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+div.card:hover {
+    border-radius: 2px;
+    border: 10px double rgb(192, 158, 7);
 }
 
 div.encantamento{
-    background-image: url('encantamento.jpg');
+    background-image: url('encantamento-blur.jpg');
 }
 
 div.pocoes{
-    background-image: url('pocoes.jpg');
+    background-image: url('pocoes-blur.jpg');
 }
 
 div.regras{
-    background-image: url('regras.jpg');
+    background-image: url('regras-blur.jpg');
 }
 
 div.ocupacoes{
-    background-image: url('ocupações.jpg');
+    background-image: url('equipamento-blur.jpg');
 }
 
 div.religiao{
-    background-image: url('templo.jpg');
+    background-image: url('religiao-blur.jpg');
 }
 
 img{
